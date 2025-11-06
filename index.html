@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Banana site made with JS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Banana JS Page</h1>
+        <nav>
+        <a href="index.html">Home</a>
+        <a href="recipes.html">Recipes</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>About Bananas</h2>
+            <p>Bananas are a great source of potassium and are known for their health benefits.</p>
+        </section>
+        <section>
+            <h2>Choose your banana</h2>
+            <div class="banana-selector">
+            <select id="bananaSelect">
+            <option value="">Select a banana image...</option>
+            <option value="Assets/cavendish.jpg">Cavendish Banana</option>
+            <option value="Assets/lady-finger.jpg">Lady Finger Banana</option>
+            <option value="Assets/red-banana.jpg">Red Banana</option>
+            </select>
+            <div class="image-container">
+            <img id="bananaImage" src="" alt="Selected banana" style="display: none; max-width: 300px; height: auto;">
+            </div>
+        </section>
+        <section>
+            <h2>Banana Counter</h2>
+            <p>Click the button to count bananas: <span id="counter">0</span></p>
+            <button id="addBanana">Add Banana</button>
+            <button id="resetCounter">Reset</button>
+        </section>
+        <section>
+            <div class="fact-generator">
+                <button id="generateFact">Generate Random Fact</button>
+            <div id="factDisplay" style="margin-top: 15px; padding: 15px; background-color: #fff3cd; border-radius: 5px; display: none;">
+            <p id="factText"></p>
+            </div>
+        </section>
+    </main>
+    <script>
+        const bananaSelect = document.getElementById('bananaSelect');
+        const bananaImage = document.getElementById('bananaImage');
+        bananaSelect.addEventListener('change', function() {
+            const selectedValue = this.value;
+            if (selectedValue) {
+                bananaImage.src = selectedValue;
+                bananaImage.style.display = 'block';
+                bananaImage.alt = this.options[this.selectedIndex].text;
+            } else {
+                bananaImage.style.display = 'none';
+            }
+        });
+        let count = 0;
+        const counterElement = document.getElementById('counter');
+        const addButton = document.getElementById('addBanana');
+        const resetButton = document.getElementById('resetCounter');
+        addButton.addEventListener('click', function() {
+            count++;
+            counterElement.textContent = count;
+        });
+        resetButton.addEventListener('click', function() {
+            count = 0;
+            counterElement.textContent = count;
+        });
+        const facts = [
+             "Bananas are berries, but strawberries aren't!",
+            "Bananas float in water because they are less dense than water.",
+            "There are more than 1,000 different types of bananas worldwide.",
+        ]
+        document.getElementById('generateFact').onclick = function() {
+            const factwithRandom = facts[Math.floor(Math.random() * facts.length)];
+            const display = document.getElementById('factDisplay');
+            document.getElementById('factText').textContent = factwithRandom;
+            display.style.display = 'block';
+        };
+    </script>
+</body>
+</html>

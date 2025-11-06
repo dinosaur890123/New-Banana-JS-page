@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Banana Recipes</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Banana Recipes</h1>
+        <nav>
+        <a href="index.html">Home</a>
+        <a href="recipes.html">Recipes</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Recipe Filter</h2>
+            <input type="text" id="searchInput" placeholder="Search recipes..." style="padding: 8px; width: 200px;">
+        </section>
+        <section class="recipe" data-name="banana-bread">
+            <h2>Banana Bread</h2>
+            <p>A classic recipe using ripe bananas to create delicious bread.</p>
+            <button class="toggleRecipe">Show/Hide Details</button>
+            <div class="recipeDetails" style="display: none;">
+            <p><strong>Ingredients:</strong> 3 ripe bananas, 2 cups flour, 1 cup sugar, 2 eggs, 1/2 cup butter</p>
+            <p><strong>Instructions:</strong> Mix ingredients, bake at 350°F for 60 minutes.</p>
+            </div>
+        </section>
+        
+
+        <section>
+            <h2>Recipe Rating</h2>
+            <p>Rate this page: </p>
+            <div id="starRating">
+                <span class="star" data-rating="1">⭐</span>
+                <span class="star" data-rating="2">⭐</span>
+                <span class="star" data-rating="3">⭐</span>
+                <span class="star" data-rating="4">⭐</span>
+                <span class="star" data-rating="5">⭐</span>
+            </div>
+            <p id="ratingResult"></p>
+        </section>
+    </main>
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const recipes = document.querySelectorAll('.recipe');
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            recipes.forEach(recipe => {
+            const recipeName = recipe.dataset.name.toLowerCase();
+            if (recipeName.includes(searchTerm)) {
+                recipe.style.display = 'block';
+            } else {
+                recipe.style.display = 'none';
+            }
+            });
+            
+        });
+    </script>
+</body>
+</html>
