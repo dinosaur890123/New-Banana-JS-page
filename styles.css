@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: #ffeb3b;
+    color: #3c3a3a;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+nav {
+    margin-top: 15px;
+}
+nav a {
+    color: #414040;
+    text-decoration: none;
+    margin: 0 15px;
+    padding: 8px 16px;
+    background-color: white;
+    border-radius: 5px;
+}
+nav a:hover {
+    background-color: #f0f0f0;
+}
+main {
+    padding: 0 20px;
+}
+section {
+    margin-bottom: 20px;
+}
+.banana-selector {
+    text-align: center;
+}
+#bananaSelect {
+    padding: 8px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+#bananaImage {
+    display: block;
+    margin: 0 auto;
+}

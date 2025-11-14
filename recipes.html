@@ -55,7 +55,29 @@
                 recipe.style.display = 'none';
             }
             });
-            
+            const toggleButtons = document.querySelectorAll('.toggleRecipe');
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const details = this.nextElementSibling;
+                if (details.style.display === 'none') {
+                    details.style.display = 'block';
+                } else {
+                    details.style.display = 'none';
+                }
+            });
+        });
+        const stars = document.querySelectorAll('.star');
+        const ratingResult = document.getElementById('ratingResult');
+        stars.forEach(star => {
+            star.addEventListener('click', function() {
+                const rating = this.dataset.rating;
+                ratingResult.textContent = `You rated this page ${rating} stars!`;
+                stars.forEach(s => s.style.opacity = '0.3');
+                for (let i = 0; i < rating; i++) {
+                    stars[i].style.opacity = '1';
+                }
+            });
+        });
         });
     </script>
 </body>
